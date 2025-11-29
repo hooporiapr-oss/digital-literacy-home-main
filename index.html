@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akashic Digital Literacy | Private School Program</title>
+<meta name="description" content="Digital literacy skills training for private schools. Assessment, games, and progress tracking. Bilingual English/Spanish.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,serif;background:#f8fafc;color:#1e293b;min-height:100vh}
+
+/* Header */
+.header{background:linear-gradient(135deg,#1e3a5f,#2d5a87);color:#fff;padding:30px 20px;text-align:center}
+.header-inner{max-width:900px;margin:0 auto}
+.logo-row{display:flex;align-items:center;justify-content:center;gap:15px;margin-bottom:12px}
+.logo{font-size:2.5em}
+.brand{font-size:1.8em;font-weight:bold}
+.tagline{color:rgba(255,255,255,0.85);font-size:1em;margin-bottom:15px}
+.lang-toggle{display:flex;justify-content:center;gap:8px}
+.lang-btn{padding:8px 20px;border:2px solid rgba(255,255,255,0.3);background:transparent;color:#fff;border-radius:20px;cursor:pointer;font-family:Georgia,serif;font-size:0.9em;transition:all 0.2s}
+.lang-btn.active{background:rgba(255,255,255,0.2);border-color:#fff}
+.lang-btn:hover{border-color:#fff}
+
+/* Navigation */
+.nav{background:#fff;border-bottom:1px solid #e2e8f0;padding:15px 20px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:900px;margin:0 auto;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.nav-link{padding:10px 20px;border-radius:25px;text-decoration:none;font-size:0.9em;transition:all 0.2s;display:flex;align-items:center;gap:6px;color:#64748b;border:2px solid transparent}
+.nav-link:hover{color:#1e3a5f;background:#f1f5f9}
+.nav-link.active{background:#1e3a5f;color:#fff}
+
+/* Main */
+.main{max-width:900px;margin:0 auto;padding:30px 20px}
+
+/* Hero Card - Assessment */
+.hero-card{background:linear-gradient(135deg,#059669,#10b981);border-radius:20px;padding:35px 30px;color:#fff;text-align:center;margin-bottom:30px;position:relative;overflow:hidden}
+.hero-card::before{content:"";position:absolute;top:-50%;right:-50%;width:100%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.1) 0%,transparent 70%);pointer-events:none}
+.hero-icon{font-size:3em;margin-bottom:15px}
+.hero-title{font-size:1.6em;margin-bottom:10px}
+.hero-desc{opacity:0.9;margin-bottom:20px;line-height:1.5;max-width:500px;margin-left:auto;margin-right:auto}
+.hero-btn{display:inline-block;padding:14px 35px;background:#fff;color:#059669;border-radius:30px;text-decoration:none;font-weight:bold;font-size:1em;transition:all 0.2s}
+.hero-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.2)}
+.hero-features{display:flex;justify-content:center;gap:25px;margin-top:25px;flex-wrap:wrap}
+.hero-feature{display:flex;align-items:center;gap:8px;font-size:0.9em}
+.hero-feature span{font-size:1.2em}
+
+/* Section */
+.section{margin-bottom:35px}
+.section-title{font-size:1.2em;color:#1e3a5f;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.section-title span{font-size:1.3em}
+
+/* Game Grid */
+.games-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.game-card{background:#fff;border:2px solid #e2e8f0;border-radius:16px;padding:22px;text-decoration:none;transition:all 0.2s;display:block}
+.game-card:hover{border-color:#1e3a5f;transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,0.08)}
+.game-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.game-icon{font-size:2em}
+.game-title{color:#1e3a5f;font-size:1.1em;font-weight:600}
+.game-desc{color:#64748b;font-size:0.9em;line-height:1.5;margin-bottom:12px}
+.game-tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{padding:4px 10px;background:#f1f5f9;color:#64748b;border-radius:12px;font-size:0.75em}
+
+/* Skills Grid */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.skill-item{background:#fff;border:2px solid #e2e8f0;border-radius:12px;padding:15px;display:flex;align-items:center;gap:12px}
+.skill-icon{font-size:1.5em}
+.skill-text{color:#1e3a5f;font-size:0.95em}
+
+/* Stats */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:30px}
+.stat-card{background:#fff;border:2px solid #e2e8f0;border-radius:12px;padding:20px;text-align:center}
+.stat-value{font-size:1.8em;color:#1e3a5f;font-weight:bold}
+.stat-label{color:#64748b;font-size:0.85em;margin-top:5px}
+
+/* CTA */
+.cta-section{background:#fff;border:2px solid #e2e8f0;border-radius:16px;padding:30px;text-align:center}
+.cta-title{color:#1e3a5f;font-size:1.3em;margin-bottom:10px}
+.cta-desc{color:#64748b;margin-bottom:20px}
+.cta-btn{display:inline-block;padding:12px 30px;background:#1e3a5f;color:#fff;border-radius:25px;text-decoration:none;font-size:0.95em;transition:all 0.2s}
+.cta-btn:hover{background:#2d5a87}
+
+/* Footer */
+.footer{text-align:center;padding:30px 20px;color:#94a3b8;font-size:0.85em;border-top:1px solid #e2e8f0;margin-top:40px}
+.footer a{color:#1e3a5f;text-decoration:none}
+
+.hidden{display:none!important}
+
+@media(max-width:700px){
+    .stats-row{grid-template-columns:repeat(2,1fr)}
+    .hero-features{flex-direction:column;gap:10px}
+    .nav-inner{gap:5px}
+    .nav-link{padding:8px 14px;font-size:0.85em}
+}
+@media(max-width:500px){
+    .brand{font-size:1.4em}
+    .hero-title{font-size:1.3em}
+    .games-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+<div class="header-inner">
+<div class="logo-row">
+<span class="logo">💻</span>
+<span class="brand">Akashic Digital Literacy</span>
+</div>
+<p class="tagline" id="tagline">Private School Program • Skills Assessment & Training</p>
+<div class="lang-toggle">
+<button class="lang-btn active" id="enBtn" onclick="setLang('en')">🇺🇸 English</button>
+<button class="lang-btn" id="esBtn" onclick="setLang('es')">🇵🇷 Español</button>
+</div>
+</div>
+</header>
+
+<!-- Navigation -->
+<nav class="nav">
+<div class="nav-inner">
+<a href="#assessment" class="nav-link active"><span>📝</span> <span id="navAssess">Assessment</span></a>
+<a href="#games" class="nav-link"><span>🎮</span> <span id="navGames">Games</span></a>
+<a href="#skills" class="nav-link"><span>🎯</span> <span id="navSkills">Skills</span></a>
+<a href="teacher-dashboard.html" class="nav-link"><span>👩‍🏫</span> <span id="navTeacher">Teachers</span></a>
+</div>
+</nav>
+
+<!-- Main Content -->
+<main class="main">
+
+<!-- Stats -->
+<div class="stats-row" id="statsEN">
+<div class="stat-card">
+<div class="stat-value">20</div>
+<div class="stat-label">Assessment Questions</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">4</div>
+<div class="stat-label">Skill Areas</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">6</div>
+<div class="stat-label">Training Games</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">2</div>
+<div class="stat-label">Languages</div>
+</div>
+</div>
+<div class="stats-row hidden" id="statsES">
+<div class="stat-card">
+<div class="stat-value">20</div>
+<div class="stat-label">Preguntas</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">4</div>
+<div class="stat-label">Áreas de Habilidad</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">6</div>
+<div class="stat-label">Juegos</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">2</div>
+<div class="stat-label">Idiomas</div>
+</div>
+</div>
+
+<!-- Hero: Assessment -->
+<section id="assessment">
+<div class="hero-card">
+<div class="hero-icon">📝</div>
+<h2 class="hero-title" id="heroTitle">Digital Literacy Assessment</h2>
+<p class="hero-desc" id="heroDesc">Evaluate student knowledge across security, internet basics, communication, and digital tools. Get instant results with personalized recommendations.</p>
+<a href="digital-literacy-assessment.html" class="hero-btn" id="heroBtn">▶️ Start Assessment</a>
+<div class="hero-features">
+<div class="hero-feature"><span>⏱️</span> <span id="feat1">15-20 minutes</span></div>
+<div class="hero-feature"><span>📊</span> <span id="feat2">Instant results</span></div>
+<div class="hero-feature"><span>💡</span> <span id="feat3">Recommendations</span></div>
+</div>
+</div>
+</section>
+
+<!-- Games Section -->
+<section id="games" class="section">
+<h3 class="section-title"><span>🎮</span> <span id="gamesTitle">Training Games</span></h3>
+
+<!-- English Games -->
+<div id="gamesEN" class="games-grid">
+<a href="typing-speed-quiz.html" class="game-card">
+<div class="game-header">
+<span class="game-icon">⌨️</span>
+<span class="game-title">Digital Literacy Typing</span>
+</div>
+<p class="game-desc">Type passages about internet safety, passwords, and phishing. Quiz mode tests comprehension.</p>
+<div class="game-tags">
+<span class="tag">📝 10 Passages</span>
+<span class="tag">❓ Quiz Mode</span>
+<span class="tag">📊 WPM</span>
+</div>
+</a>
+
+<a href="word-search-digital-literacy-en.html" class="game-card">
+<div class="game-header">
+<span class="game-icon">🔍</span>
+<span class="game-title">Tech Terms Word Search</span>
+</div>
+<p class="game-desc">Find words like PASSWORD, PHISHING, FIREWALL. Each word includes a definition.</p>
+<div class="game-tags">
+<span class="tag">📚 28 Words</span>
+<span class="tag">💡 Definitions</span>
+<span class="tag">⏱️ Timed</span>
+</div>
+</a>
+
+<a href="number-memory-english.html" class="game-card">
+<div class="game-header">
+<span class="game-icon">🔢</span>
+<span class="game-title">Number Memory</span>
+</div>
+<p class="game-desc">Remember and recall increasingly longer number sequences. Builds working memory.</p>
+<div class="game-tags">
+<span class="tag">🧠 Memory</span>
+<span class="tag">📈 Progressive</span>
+</div>
+</a>
+
+<a href="sequence-memory-english.html" class="game-card">
+<div class="game-header">
+<span class="game-icon">🔲</span>
+<span class="game-title">Sequence Memory</span>
+</div>
+<p class="game-desc">Watch and repeat visual patterns that grow longer each round.</p>
+<div class="game-tags">
+<span class="tag">👁️ Visual</span>
+<span class="tag">🔄 Pattern</span>
+</div>
+</a>
+
+<a href="memory-match-english.html" class="game-card">
+<div class="game-header">
+<span class="game-icon">🃏</span>
+<span class="game-title">Memory Match</span>
+</div>
+<p class="game-desc">Classic card matching game. Find all pairs in the fewest moves.</p>
+<div class="game-tags">
+<span class="tag">🎴 Cards</span>
+<span class="tag">🏆 Score</span>
+</div>
+</a>
+
+<a href="reaction-time-english.html" class="game-card">
+<div class="game-header">
+<span class="game-icon">⚡</span>
+<span class="game-title">Reaction Time</span>
+</div>
+<p class="game-desc">Test reflexes by clicking as fast as possible when the screen changes.</p>
+<div class="game-tags">
+<span class="tag">⏱️ Speed</span>
+<span class="tag">🎯 Accuracy</span>
+</div>
+</a>
+</div>
+
+<!-- Spanish Games -->
+<div id="gamesES" class="games-grid hidden">
+<a href="typing-speed-quiz-es.html" class="game-card">
+<div class="game-header">
+<span class="game-icon">⌨️</span>
+<span class="game-title">Escritura Digital</span>
+</div>
+<p class="game-desc">Escribe pasajes sobre seguridad en internet, contraseñas y phishing. Modo quiz incluido.</p>
+<div class="game-tags">
+<span class="tag">📝 10 Pasajes</span>
+<span class="tag">❓ Quiz</span>
+<span class="tag">📊 PPM</span>
+</div>
+</a>
+
+<a href="word-search-digital-literacy-es.html" class="game-card">
+<div class="game-header">
+<span class="game-icon">🔍</span>
+<span class="game-title">Sopa de Letras Tech</span>
+</div>
+<p class="game-desc">Encuentra palabras como CLAVE, VIRUS, NUBE. Cada palabra incluye definición.</p>
+<div class="game-tags">
+<span class="tag">📚 28 Palabras</span>
+<span class="tag">💡 Definiciones</span>
+<span class="tag">⏱️ Tiempo</span>
+</div>
+</a>
+
+<a href="number-memory-spanish-pr.html" class="game-card">
+<div class="game-header">
+<span class="game-icon">🔢</span>
+<span class="game-title">Memoria de Números</span>
+</div>
+<p class="game-desc">Recuerda secuencias de números cada vez más largas. Fortalece la memoria.</p>
+<div class="game-tags">
+<span class="tag">🧠 Memoria</span>
+<span class="tag">📈 Progresivo</span>
+</div>
+</a>
+
+<a href="sequence-memory-spanish-pr.html" class="game-card">
+<div class="game-header">
+<span class="game-icon">🔲</span>
+<span class="game-title">Memoria de Secuencia</span>
+</div>
+<p class="game-desc">Observa y repite patrones visuales que crecen cada ronda.</p>
+<div class="game-tags">
+<span class="tag">👁️ Visual</span>
+<span class="tag">🔄 Patrón</span>
+</div>
+</a>
+
+<a href="memory-match-spanish-pr.html" class="game-card">
+<div class="game-header">
+<span class="game-icon">🃏</span>
+<span class="game-title">Parejas de Memoria</span>
+</div>
+<p class="game-desc">Juego clásico de parejas. Encuentra todas en los menos movimientos.</p>
+<div class="game-tags">
+<span class="tag">🎴 Cartas</span>
+<span class="tag">🏆 Puntaje</span>
+</div>
+</a>
+
+<a href="reaction-time-spanish-pr.html" class="game-card">
+<div class="game-header">
+<span class="game-icon">⚡</span>
+<span class="game-title">Tiempo de Reacción</span>
+</div>
+<p class="game-desc">Prueba tus reflejos haciendo clic cuando la pantalla cambie de color.</p>
+<div class="game-tags">
+<span class="tag">⏱️ Velocidad</span>
+<span class="tag">🎯 Precisión</span>
+</div>
+</a>
+</div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="section">
+<h3 class="section-title"><span>🎯</span> <span id="skillsTitle">Skills Covered</span></h3>
+
+<div id="skillsEN" class="skills-grid">
+<div class="skill-item"><span class="skill-icon">🔐</span><span class="skill-text">Password Security</span></div>
+<div class="skill-item"><span class="skill-icon">🎣</span><span class="skill-text">Spotting Phishing</span></div>
+<div class="skill-item"><span class="skill-icon">🌐</span><span class="skill-text">Browser Basics</span></div>
+<div class="skill-item"><span class="skill-icon">📧</span><span class="skill-text">Email Safety</span></div>
+<div class="skill-item"><span class="skill-icon">🔍</span><span class="skill-text">Smart Searching</span></div>
+<div class="skill-item"><span class="skill-icon">📱</span><span class="skill-text">Social Media Privacy</span></div>
+<div class="skill-item"><span class="skill-icon">⬇️</span><span class="skill-text">Safe Downloads</span></div>
+<div class="skill-item"><span class="skill-icon">☁️</span><span class="skill-text">Cloud Storage</span></div>
+<div class="skill-item"><span class="skill-icon">🔒</span><span class="skill-text">Two-Factor Auth</span></div>
+<div class="skill-item"><span class="skill-icon">📶</span><span class="skill-text">Wi-Fi Security</span></div>
+<div class="skill-item"><span class="skill-icon">🦠</span><span class="skill-text">Malware Awareness</span></div>
+<div class="skill-item"><span class="skill-icon">👣</span><span class="skill-text">Digital Footprint</span></div>
+</div>
+
+<div id="skillsES" class="skills-grid hidden">
+<div class="skill-item"><span class="skill-icon">🔐</span><span class="skill-text">Contraseñas Seguras</span></div>
+<div class="skill-item"><span class="skill-icon">🎣</span><span class="skill-text">Detectar Phishing</span></div>
+<div class="skill-item"><span class="skill-icon">🌐</span><span class="skill-text">Usar Navegadores</span></div>
+<div class="skill-item"><span class="skill-icon">📧</span><span class="skill-text">Seguridad de Correo</span></div>
+<div class="skill-item"><span class="skill-icon">🔍</span><span class="skill-text">Búsquedas Inteligentes</span></div>
+<div class="skill-item"><span class="skill-icon">📱</span><span class="skill-text">Privacidad en Redes</span></div>
+<div class="skill-item"><span class="skill-icon">⬇️</span><span class="skill-text">Descargas Seguras</span></div>
+<div class="skill-item"><span class="skill-icon">☁️</span><span class="skill-text">Almacenamiento Nube</span></div>
+<div class="skill-item"><span class="skill-icon">🔒</span><span class="skill-text">Autenticación 2FA</span></div>
+<div class="skill-item"><span class="skill-icon">📶</span><span class="skill-text">Seguridad Wi-Fi</span></div>
+<div class="skill-item"><span class="skill-icon">🦠</span><span class="skill-text">Malware y Virus</span></div>
+<div class="skill-item"><span class="skill-icon">👣</span><span class="skill-text">Huella Digital</span></div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+<h3 class="cta-title" id="ctaTitle">Ready to Get Started?</h3>
+<p class="cta-desc" id="ctaDesc">Contact us to bring digital literacy training to your school.</p>
+<a href="mailto:akashicpr@proton.me" class="cta-btn" id="ctaBtn">📧 Contact Us</a>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+<p>© 2024 <a href="https://akashic.live">Akashic Works LLC</a> • San Juan, Puerto Rico 🇵🇷</p>
+<p style="margin-top:8px" id="footerTag">Building digital skills through play</p>
+</footer>
+
+<script>
+var lang = 'en';
+
+var translations = {
+    es: {
+        tagline: "Programa para Escuelas Privadas • Evaluación y Entrenamiento",
+        navAssess: "Evaluación",
+        navGames: "Juegos",
+        navSkills: "Habilidades",
+        navTeacher: "Maestros",
+        heroTitle: "Evaluación de Alfabetización Digital",
+        heroDesc: "Evalúa el conocimiento estudiantil en seguridad, internet, comunicación y herramientas digitales. Resultados instantáneos con recomendaciones.",
+        heroBtn: "▶️ Comenzar Evaluación",
+        feat1: "15-20 minutos",
+        feat2: "Resultados instantáneos",
+        feat3: "Recomendaciones",
+        gamesTitle: "Juegos de Entrenamiento",
+        skillsTitle: "Habilidades Cubiertas",
+        ctaTitle: "¿Listo para Comenzar?",
+        ctaDesc: "Contáctanos para traer el entrenamiento de alfabetización digital a tu escuela.",
+        ctaBtn: "📧 Contáctanos",
+        footerTag: "Desarrollando habilidades digitales a través del juego"
+    }
+};
+
+function setLang(l) {
+    lang = l;
+    document.getElementById('enBtn').classList.toggle('active', l === 'en');
+    document.getElementById('esBtn').classList.toggle('active', l === 'es');
+    
+    // Toggle content sections
+    document.getElementById('statsEN').classList.toggle('hidden', l !== 'en');
+    document.getElementById('statsES').classList.toggle('hidden', l !== 'es');
+    document.getElementById('gamesEN').classList.toggle('hidden', l !== 'en');
+    document.getElementById('gamesES').classList.toggle('hidden', l !== 'es');
+    document.getElementById('skillsEN').classList.toggle('hidden', l !== 'en');
+    document.getElementById('skillsES').classList.toggle('hidden', l !== 'es');
+    
+    // Update text elements
+    if (l === 'es') {
+        var t = translations.es;
+        for (var key in t) {
+            var el = document.getElementById(key);
+            if (el) {
+                if (el.tagName === 'A') {
+                    el.innerHTML = t[key];
+                } else {
+                    el.textContent = t[key];
+                }
+            }
+        }
+    } else {
+        // Reset to English
+        document.getElementById('tagline').textContent = "Private School Program • Skills Assessment & Training";
+        document.getElementById('navAssess').textContent = "Assessment";
+        document.getElementById('navGames').textContent = "Games";
+        document.getElementById('navSkills').textContent = "Skills";
+        document.getElementById('navTeacher').textContent = "Teachers";
+        document.getElementById('heroTitle').textContent = "Digital Literacy Assessment";
+        document.getElementById('heroDesc').textContent = "Evaluate student knowledge across security, internet basics, communication, and digital tools. Get instant results with personalized recommendations.";
+        document.getElementById('heroBtn').innerHTML = "▶️ Start Assessment";
+        document.getElementById('feat1').textContent = "15-20 minutes";
+        document.getElementById('feat2').textContent = "Instant results";
+        document.getElementById('feat3').textContent = "Recommendations";
+        document.getElementById('gamesTitle').textContent = "Training Games";
+        document.getElementById('skillsTitle').textContent = "Skills Covered";
+        document.getElementById('ctaTitle').textContent = "Ready to Get Started?";
+        document.getElementById('ctaDesc').textContent = "Contact us to bring digital literacy training to your school.";
+        document.getElementById('ctaBtn').innerHTML = "📧 Contact Us";
+        document.getElementById('footerTag').textContent = "Building digital skills through play";
+    }
+    
+    localStorage.setItem('dl_lang', l);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    var saved = localStorage.getItem('dl_lang');
+    if (saved) setLang(saved);
+    
+    // Smooth scroll for nav
+    document.querySelectorAll('.nav-link[href^="#"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            document.querySelectorAll('.nav-link').forEach(function(l) { l.classList.remove('active'); });
+            this.classList.add('active');
+        });
+    });
+});
+</script>
+</body>
+</html>
